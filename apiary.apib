@@ -29,150 +29,61 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
 + Response 200 (application/json)
 
         [{
-         "id": 1, "identifier": "KingJames", "name": "Lebron James", "profile picture": [link to profile picture], 
-         "bio": "String content", "tweets": "website of the person's tweeter account", "Graphs": [link to graphs of some statistic ],
-         "Video": [link to the featured video related to the handle], "related handles": "/handles/{id}/handles",
-         "related hashtags": "/handles/{id}/hashtags", "related clusters": "/clusters/{id}/clusters"
+         "id": 1, "identifier": "KingJames", "name": "Lebron James", "profile picture": [picture], 
+         "bio": "String content", "tweets": "website of the person's tweeter account", "Graphs": [graphs of some statistic ],
+         "Video": [the featured video related to the handle], "related handles": [links to related handles],
+         "related hashtags": [links to related hashtags], "related clusters": [links to related clusters]
         }]
 
-## Related handles of each handle [/handles/{id}/handles]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
-    
-### List the id, tweeter identifier, name and this website's page of handles related to the handle of the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 2, "identifier": "kobebryant", "name": "Kobe Bryant", "page": "/handles/{id}"
-        }]
-
-## Related hashtags of each handle [/handles/{id}/hashtags]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
-    
-### List the id, name and this website's page of hashtags related to the handle of the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 1, "name": "HeatsVsSpurs", "page": "/hashtags/{id}"
-        }]
-
-
-## Related clusters of each handle [/handles/{id}/clusters]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
-    
-### List the id, name and this website's page of hashtags related to the handle of the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 1, "name": "HeatsVsSpurs", "page": "/hashtags/{id}"
-        }]
 
 
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
 
 ## HashTags Collection [/hashtags]
-### List all HashTags and all their info [GET]
+### List the id and name of all hashtags [GET]
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "HeatsVsSpurs", retweet_count:"600000" 
+         "id": 1, "name": "HeatsVsSpurs" 
         }, {
-         "id": 2, "name": "WorldCup", retweet_count:"99999999"
+         "id": 2, "name": "WorldCup"
         }]
 
 
-## HashTags Collection [/hashtags/id/i/tweeters]
+## All info of each hashtag [/hashtags/{id}]
 
 + Parameters
-    + i (required, integer) ... this is the id of hashtags
+    + id (required, integer) ... this is the id of hashtags
 
-### List the id and identifier of the handles that tweet a certain hashtag [GET]
+### List all info of a certain hashtag [GET]
 + Response 200 (application/json)
 
         [{
-         "id": 1, "identifier": "KingJames"
-         }, {
-         "id": 2, "identifier": "kobebryant"
-         }]
+         "id": 1, "name": "HeatsVsSpurs", "description" : "NBA final" 
+         } ]
 
 
+# Group Clusters
+Clusters are
 
 
-## HashTags Collection [/hashtags/name]
-### List the names of all hashtag [GET]
+## Clusters Collection [/clusters]
+### List the id and name of all cluster [GET]
 + Response 200 (application/json)
 
         [{
-         "name": "HeatsVsSpurs" 
+         "id": 1, "name": "C1" 
         }, {
-         "name": "WorldCup"
+         "id": 2, "name": "C2"
         }]
 
 
 
-## HashTag [/hashtags/name/n]
-Get all hashtags with a certain name
+## All info of each cluster [/clusters/{id}]
 
 + Parameters
-   + n (required, string, `WorldCup` ) ... Need to be the name of objects
-   
-### Retrieve a Hashtag [GET]
+    + id (required, integer) ... this is the id of the wanted cluster
+
+### List all info of a certain hashtag [GET]
 + Response 200 (application/json)
-
-   + Header
-
-            X-My-Header: The Value
-
-   + Body
-
-            { "id": 2, "name":"WorldCup" }
-
-## HashTag [/hashtags/id/i]
-Get the hashtag info with a certain id
-
-+ Parameters
-   + i (required, integer, `1` ) ... Need to be an integer
-
-   
-### Retrieve a Hashtag [GET]
-+ Response 200 (application/json)
-
-   + Header
-
-            X-My-Header: The Value
-
-   + Body
-
-            { "id": 2, "name":"WorldCup" }
-
-
-
-## HashTag [/hashtags/{id}]
-A single Note object with all its details
-
-+ Parameters
-   + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-
-
-### Retrieve a Hashtag [GET]
-+ Response 200 (application/json)
-
-   + Header
-
-            X-My-Header: The Value
-
-   + Body
-
-            { "id": 2, "name":"WorldCup" }
-
-
-
