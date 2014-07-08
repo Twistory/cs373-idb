@@ -12,14 +12,14 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
 + Response 200 (application/json)
 
         [{
-         "id": 1, "identifier": "KingJames","name": "Lebron James",
+         "id": 1, "name": "KingJames",
         }, {
-         "id": 2, "identifier": "kobebryant","name": "Kobe Bryant"
+         "id": 2, "name": "kobebryant",
         }]
 
 
 
-## Detailed info of each id [/handles/{id}]
+## Detailed info of each id [/handles/{handle_id}]
 
 + Parameters
     + id (required, integer) ... This is the id of the desired handle
@@ -29,55 +29,15 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
 + Response 200 (application/json)
 
         [{
-         "id": 1, "identifier": "KingJames", "name": "Lebron James", 
+         "id": 1, "name": "KingJames", 
          "tweets": "website of the person's tweeter account",
          "bio": " string content"
-         "related handles": "/handles/{id}/handles",
-         "related hashtags": "/handles/{id}/hashtags", "related clusters": "/handles/{id}/clusters"
-        }]
-
-## Related handles of each handle [/handles/{id}/handles]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
-    
-### List the id, tweeter identifier, name and this website's page of handles related to the handle of the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 2, "identifier": "kobebryant", "name": "Kobe Bryant", "page": "/handles/{id}"
-        }]
-
-## Related hashtags of each handle [/handles/{id}/hashtags]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
-    
-### List the id, name and this website's page of hashtags related to the handle of the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 1, "name": "HeatsVsSpurs", "page": "/hashtags/{id}"
+         
         }]
 
 
-## Related clusters of each handle [/handles/{id}/clusters]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
-### List the id, name and this website's page of clusters related to the handle of the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 1, "name": "C1", "page": "/clusters/{id}"
-         }]
-
 
     
-
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
 
@@ -86,13 +46,13 @@ Hashtags are markers that denote a specific tweet
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "HeatsVsSpurs",
+         "id": 1, "name": "HeatsVsSpurs"
         }, {
-         "id": 2, "name": "WorldCup", 
+         "id": 2, "name": "WorldCup" 
         }]
 
 
-## Detailed info of each hashtag [/hashtags/{id}]
+## Detailed info of each hashtag [/hashtags/{hashtag_id}]
 
 + Parameters
     + id (required, integer) ... this is the id of hashtags
@@ -106,7 +66,7 @@ Hashtags are markers that denote a specific tweet
 
 
 # Group Clusters
-Clusters are
+Clusters are groupings of handles and hashtags that all relate to a single specific topic
 
 
 ## Clusters Collection [/clusters]
@@ -114,14 +74,14 @@ Clusters are
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "C1" 
+         "id": 1, "name": "MiamiHeat"
         }, {
-         "id": 2, "name": "C2"
+         "id": 2, "name": "Germany"
         }]
 
 
 
-## Detailed info of each cluster [/clusters/{id}]
+## Detailed info of each cluster [/clusters/{cluster_id}]
 
 + Parameters
     + id (required, integer) ... this is the id of the wanted cluster
@@ -130,7 +90,7 @@ Clusters are
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "C1", "description": "to be decided" 
+         "id": 1, "name": "MiamiHeat", "description": "NBA Basketball team"
         }]
 
 
