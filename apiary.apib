@@ -35,17 +35,46 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
          "related hashtags": "/handles/{id}/hashtags", "related clusters": "/clusters/{id}/clusters"
         }]
 
-## Related handles to each handle [/handles/{id}/handles]
+## Related handles of each handle [/handles/{id}/handles]
 
 + Parameters
     + id (required, integer) ... This is the id of the desired handle
 
     
-### List the id, tweeter identifier, name and link of handles related to the handle of the given id [GET]
+### List the id, tweeter identifier, name and this website's page of handles related to the handle of the given id [GET]
 + Response 200 (application/json)
 
         [{
-         "id": 2, "identifier": "kobebryant", "name": "Kobe Bryant" 
+         "id": 2, "identifier": "kobebryant", "name": "Kobe Bryant", "page": "/handles/{id}"
+        }]
+
+## Related hashtags of each handle [/handles/{id}/hashtags]
+
++ Parameters
+    + id (required, integer) ... This is the id of the desired handle
+
+    
+### List the id, name and this website's page of hashtags related to the handle of the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "name": "HeatsVsSpurs", "page": "/hashtags/{id}"
+        }]
+
+
+## Related clusters of each handle [/handles/{id}/clusters]
+
++ Parameters
+    + id (required, integer) ... This is the id of the desired handle
+
+    
+### List the id, name and this website's page of hashtags related to the handle of the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "name": "HeatsVsSpurs", "page": "/hashtags/{id}"
+        }]
+
 
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
@@ -88,14 +117,7 @@ Hashtags are markers that denote a specific tweet
          "name": "WorldCup"
         }]
 
-### Create a Hashtag [POST]
-+ Request (application/json)
 
-        { "name": "LebronFreeAgency" }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "name": "LebronnFreeAgency" }
 
 ## HashTag [/hashtags/name/n]
 Get all hashtags with a certain name
