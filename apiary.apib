@@ -8,7 +8,7 @@ Twistory API gives access to real world **Twitter data** and view _trending even
 Twitter Handle resources are people/entities that are actively engaged on twitter 
 
 ## Handle Collection [/handles]
-### List all Handle [GET]
+### List the id, tweeter identifier, and name of all Handle [GET]
 + Response 200 (application/json)
 
         [{
@@ -18,6 +18,34 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
         }]
 
 
+
+## Detailed info of each id [/handles/{id}]
+
++ Parameters
+    + id (required, integer) ... This is the id of the desired handle
+
+    
+### List all the info of the handle with the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "identifier": "KingJames", "name": "Lebron James", "profile picture": [link to profile picture], 
+         "bio": "String content", "tweets": "website of the person's tweeter account", "Graphs": [link to graphs of some statistic ],
+         "Video": [link to the featured video related to the handle], "related handles": "/handles/{id}/handles",
+         "related hashtags": "/handles/{id}/hashtags", "related clusters": "/clusters/{id}/clusters"
+        }]
+
+## Related handles to each handle [/handles/{id}/handles]
+
++ Parameters
+    + id (required, integer) ... This is the id of the desired handle
+
+    
+### List the id, tweeter identifier, name and link of handles related to the handle of the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 2, "identifier": "kobebryant", "name": "Kobe Bryant" 
 
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
