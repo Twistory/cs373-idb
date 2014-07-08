@@ -12,20 +12,10 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
 + Response 200 (application/json)
 
         [{
-         "id": 1, "identifier": "KingJames","name": "Lebron James"
+         "id": 1, "identifier": "KingJames","name": "Lebron James",
         }, {
          "id": 2, "identifier": "kobebryant","name": "Kobe Bryant"
         }]
-
-### Create/Store a new Handle [POST]
-+ Request (application/json)
-
-        { "identifier": "neymarjr","name": "Neymar Jr" }
-
-+ Response 201 (application/json)
-        
-        { "id": 3, "identifier": "neymarjr", "name": "Neymar Jr"}
-       
 
 
 
@@ -33,13 +23,41 @@ Twitter Handle resources are people/entities that are actively engaged on twitte
 Hashtags are markers that denote a specific tweet
 
 ## HashTags Collection [/hashtags]
-### List all HashTags [GET]
+### List all HashTags and all their info [GET]
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "HeatsVsSpurs" retweet_count:"600000" 
+         "id": 1, "name": "HeatsVsSpurs", retweet_count:"600000" 
         }, {
-         "id": 2, "name": "WorldCup" retweet_count:"99999999"
+         "id": 2, "name": "WorldCup", retweet_count:"99999999"
+        }]
+
+
+## HashTags Collection [/hashtags/id/i/tweeters]
+
++ Parameters
+    + i (required, integer) ... this is the id of hashtags
+
+### List the id and identifier of the handles that tweet a certain hashtag [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "identifier": "KingJames"
+         }, {
+         "id": 2, "identifier": "kobebryant"
+         }]
+
+
+
+
+## HashTags Collection [/hashtags/name]
+### List the names of all hashtag [GET]
++ Response 200 (application/json)
+
+        [{
+         "name": "HeatsVsSpurs" 
+        }, {
+         "name": "WorldCup"
         }]
 
 ### Create a Hashtag [POST]
@@ -50,14 +68,12 @@ Hashtags are markers that denote a specific tweet
 + Response 201 (application/json)
 
         { "id": 3, "name": "LebronnFreeAgency" }
-       
 
-
-## HashTag [/hashtags/name/]
+## HashTag [/hashtags/name/n]
 Get all hashtags with a certain name
 
 + Parameters
-   + (a Phrase or Word that was tweeted `#MauryIsHeTheFather`) (required, string, `WorldCup` ) ... Need to be the name of objects
+   + n (required, string, `WorldCup` ) ... Need to be the name of objects
    
 ### Retrieve a Hashtag [GET]
 + Response 200 (application/json)
@@ -69,6 +85,25 @@ Get all hashtags with a certain name
    + Body
 
             { "id": 2, "name":"WorldCup" }
+
+## HashTag [/hashtags/id/i]
+Get the hashtag info with a certain id
+
++ Parameters
+   + i (required, integer, `1` ) ... Need to be an integer
+
+   
+### Retrieve a Hashtag [GET]
++ Response 200 (application/json)
+
+   + Header
+
+            X-My-Header: The Value
+
+   + Body
+
+            { "id": 2, "name":"WorldCup" }
+
 
 
 ## HashTag [/hashtags/{id}]
@@ -89,6 +124,5 @@ A single Note object with all its details
 
             { "id": 2, "name":"WorldCup" }
 
-### Remove a Hashtag [DELETE]
-+ Response 204
+
 
