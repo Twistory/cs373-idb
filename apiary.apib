@@ -1,96 +1,127 @@
 FORMAT: 1A
-HOST: http://www.google.com
+HOST: twistory.pythonanywhere.com/
 
 #### Twistory
 Twistory API gives access to real world **Twitter data** and view _trending events_ 
 
+
 # Group Handles
-Twitter Handle resources are people/entities that are actively engaged on twitter 
+Twitter Handle resources are _people/entities_ that are actively engaged on twitter 
+
+## Handle [/handles/{handles_id}]
+  Handle object that represents data from a single profile
++ Parameters
+    + handles_id (optional, string, `/handles/lebron_james`) ... Unique identifier to a twitter profile.
+
++ Model (application/json)
+    + Headers
+
+        ```
+        Link: <http:/api.gistfox.com/>;rel="self",<http:/api.gistfox.com/gists>;rel="handles"
+        ```
+    + Body
+
+        ```
+        {
+          "_links": {
+              "self": { "href": "/" },
+              "gists": { "href": "/gists?{since}", "templated": true }
+          }
+        }
+        ```
+        
+### Retrieve a single Handle [GET]
++ Response 200 
+    
+    [Handle][]
 
 ## Handle Collection [/handles]
-### List the id, tweeter identifier, and name of all Handle [GET]
-+ Response 200 (application/json)
+Retrieve a collection of Handles 
++ Model (application/json)
+    + Headers
 
-        [{
-         "id": 1, "name": "KingJames",
-        }, {
-         "id": 2, "name": "kobebryant",
-        }]
+        ```
+        Link: <http:/api.gistfox.com/>;rel="self",<http:/api.gistfox.com/gists>;rel="handles"
+        ```
+    + Body
 
-
-
-## Detailed info of each id [/handles/{handle_id}]
-
-+ Parameters
-    + id (required, integer) ... This is the id of the desired handle
-
+        ```
+        {
+          "_links": {
+              "self": { "href": "/" },
+              "gists": { "href": "/gists?{since}", "templated": true }
+          }
+        }
+        ```
+        
+### Retrieve a Collection of Handles [GET]
++ Response 200 
     
-### Detailed info of the handle with the given id [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 1, "name": "KingJames", 
-         "tweets": "website of the person's tweeter account",
-         "bio": " string content"
-         
-        }]
+    [Handle Collection][]
 
 
 
-    
+
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
 
 ## HashTags Collection [/hashtags]
-### List the id and name of all hashtags [GET]
+### List all HashTags [GET]
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "HeatsVsSpurs"
+         "id": 1, "name": "HeatsVsSpurs" retweet_count:"600000" 
         }, {
-         "id": 2, "name": "WorldCup" 
+         "id": 2, "name": "WorldCup" retweet_count:"99999999"
         }]
 
+### Create a Hashtag [POST]
++ Request (application/json)
 
-## Detailed info of each hashtag [/hashtags/{hashtag_id}]
+        { "name": "LebronFreeAgency" }
+
++ Response 201 (application/json)
+
+        { "id": 3, "name": "LebronnFreeAgency" }
+       
+
+
+## HashTag [/hashtags/name/]
+Get all hashtags with a certain name
 
 + Parameters
-    + id (required, integer) ... this is the id of hashtags
-
-### List all info of a certain hashtag [GET]
+   + name (required, string, `WorldCup` ) ... Need to be the name of objects
+   
+### Retrieve a Hashtag [GET]
 + Response 200 (application/json)
 
-        [{
-         "id": 1, "name": "HeatsVsSpurs", "description" : "NBA final" 
-         } ]
+   + Header
+
+            X-My-Header: The Value
+
+   + Body
+
+            { "id": 2, "name":"WorldCup" }
 
 
-# Group Clusters
-Clusters are groupings of handles and hashtags that all relate to a single specific topic
-
-
-## Clusters Collection [/clusters]
-### List the id and name of all cluster [GET]
-+ Response 200 (application/json)
-
-        [{
-         "id": 1, "name": "MiamiHeat"
-        }, {
-         "id": 2, "name": "Germany"
-        }]
-
-
-
-## Detailed info of each cluster [/clusters/{cluster_id}]
+## HashTag [/hashtags/{id}]
+A single Note object with all its details
 
 + Parameters
-    + id (required, integer) ... this is the id of the wanted cluster
+   + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
 
-### List all info of a certain hashtag [GET]
+
+### Retrieve a Hashtag [GET]
 + Response 200 (application/json)
 
-        [{
-         "id": 1, "name": "MiamiHeat", "description": "NBA Basketball team"
-        }]
+   + Header
 
+            X-My-Header: The Value
+
+   + Body
+
+            { "id": 2, "name":"WorldCup" }
+
+### Remove a Hashtag [DELETE]
++ Response 204
 
