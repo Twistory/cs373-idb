@@ -17,9 +17,14 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
 
         [{
          "id": 1, "name": "KingJames", "picture": "link to pic"
-         }, {
+         }, 
+         {
          "id": 2, "name": "oscar11", "picture": "link to pic"
+         },
+         {
+         "id": 3, "name": "kobebryant", "picture": "link to pic"
          }]
+         
 
 
 
@@ -32,11 +37,20 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
 
 + Response 200 (application/json)
 
-        [{
+        {
             "id" 1, "name": "KingJames", "picture": "link to pic", "bio": "Current NBA player",
-            "tweets": "link to this handle's tweeter website"
-        }]
+            "tweets": "link to this handle's tweeter website",
+            "Videos": [{"video": "link to video", "description": "dunk"}],
+            "Graphs": [{"graph": "link to graph", "description": "number of tweets in 2013"}],
+            "Related Handles": [{"id":3, "name": "kobebryant", "page": "/handles/3"}],
+            "Related Hashtags": [{"id":1, "name": "HeatsVsSpurs", "page": "/hashtags/1"},
+                                 {"id":3, "name": "FreeAgency", "page": "/hashtags/3"}
+                                ],
+            "Related Clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/{1}"}]
+        }
     
+
+
 
 
 # Group Hashtags
@@ -67,6 +81,46 @@ Hashtags are markers that denote a specific tweet
         [{
             "id": 1, "name": "HeatsVsSpurs", "description": "NBA final"
         }]
+
+
+## Related handles of each handle [/hashtags/{hashtag_id}/handles]
+
++ Parameters
+    + hashtag_id (required, integer) ... This is the id of the desired hashtag
+
+    
+### List the id, tweeter identifier, name and this website's page of handles related to the handle of the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "name": "KingJames", "page": "/handles/3"
+        }]
+
+## Related hashtags of each handle [/hashtags/{hashtag_id}/hashtags]
+
++ Parameters
+    + hashtag_id (required, integer) ... This is the id of the desired hashtag
+
+    
+### List the id, name and this website's page of hashtags related to the handle of the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "name": "HeatsVsSpurs", "page": "/hashtags/1"
+        }]
+
+
+## Related clusters of each handle [/hashtags/{hastag_id}/clusters]
+
++ Parameters
+    + id (required, integer) ... This is the id of the desired hashtag
+
+### List the id, name and this website's page of clusters related to the handle of the given id [GET]
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "name": "MiamiHeat", "page": "/clusters/1"
+         }]
 
 
 
