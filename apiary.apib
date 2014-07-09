@@ -8,120 +8,80 @@ Twistory API gives access to real world **Twitter data** and view _trending even
 # Group Handles
 Twitter Handle resources are _people/entities_ that are actively engaged on twitter 
 
-## Handle [/handles/{handles_id}]
-  Handle object that represents data from a single profile
-+ Parameters
-    + handles_id (optional, string, `/handles/lebron_james`) ... Unique identifier to a twitter profile.
-
-+ Model (application/json)
-    + Headers
-
-        ```
-        Link: <http:/api.gistfox.com/>;rel="self",<http:/api.gistfox.com/gists>;rel="handles"
-        ```
-    + Body
-
-        ```
-        {
-          "_links": {
-              "self": { "href": "/" },
-              "gists": { "href": "/gists?{since}", "templated": true }
-          }
-        }
-        ```
-        
-### Retrieve a single Handle [GET]
-+ Response 200 
-    
-    [Handle][]
 
 ## Handle Collection [/handles]
-Retrieve a collection of Handles 
-+ Model (application/json)
-    + Headers
 
-        ```
-        Link: <http:/api.gistfox.com/>;rel="self",<http:/api.gistfox.com/gists>;rel="handles"
-        ```
-    + Body
+### List the id, name and profile picutre of Handles [GET]
 
-        ```
-        {
-          "_links": {
-              "self": { "href": "/" },
-              "gists": { "href": "/gists?{since}", "templated": true }
-          }
-        }
-        ```
-        
-### Retrieve a Collection of Handles [GET]
-+ Response 200 
++ Response 200 (application/json)
+
+        [{
+         "id": 1, "name": "KingJames", "picture": "link to pic"
+         }, {
+         "id": 2, "name": "oscar11", "picture": "link to pic"
+         }]
+
+
+
+## Handle specific info [/handles/{handle_id}]
+
++ Parameters
+    + handle_id(required, integer) ... the id given to a handle in this website
+
+### List all the info of the handle with the given id [GET]
+
++ Response 200 (application/json)
+
+        [{
+            "id" 1, "name": "KingJames", "picture": "link to pic", "bio": "Current NBA player",
+            "tweets": "link to this handle's tweeter website"
+        }]
     
-    [Handle Collection][]
-
-
 
 
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
 
 ## HashTags Collection [/hashtags]
-### List all HashTags [GET]
+
+### List the id and name of all HashTags [GET]
+
 + Response 200 (application/json)
 
         [{
-         "id": 1, "name": "HeatsVsSpurs" retweet_count:"600000" 
+         "id": 1, "name": "HeatsVsSpurs" 
         }, {
-         "id": 2, "name": "WorldCup" retweet_count:"99999999"
+         "id": 2, "name": "WorldCup" 
         }]
 
-### Create a Hashtag [POST]
-+ Request (application/json)
 
-        { "name": "LebronFreeAgency" }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "name": "LebronnFreeAgency" }
-       
-
-
-## HashTag [/hashtags/name/]
-Get all hashtags with a certain name
+## Hashtag specific info [/hashtags/{hashtag_id}]
 
 + Parameters
-   + name (required, string, `WorldCup` ) ... Need to be the name of objects
-   
-### Retrieve a Hashtag [GET]
+    + hashtag_id(required, integer) ... the id given to a hashtag in this website
+
+### List all the info of the handle with the given id [GET]
+
 + Response 200 (application/json)
 
-   + Header
+        [{
+            "id": 1, "name": "HeatsVsSpurs", "description": "NBA final"
+        }]
 
-            X-My-Header: The Value
+# Group Clusters
+Clusters are groups that are associated with multiple handles and hashtags
 
-   + Body
+## Clusters Collection [/clusters]
 
-            { "id": 2, "name":"WorldCup" }
+### List the id and name of all clusters [GET]
 
-
-## HashTag [/hashtags/{id}]
-A single Note object with all its details
-
-+ Parameters
-   + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-
-
-### Retrieve a Hashtag [GET]
 + Response 200 (application/json)
 
-   + Header
-
-            X-My-Header: The Value
-
-   + Body
-
-            { "id": 2, "name":"WorldCup" }
-
-### Remove a Hashtag [DELETE]
-+ Response 204
+        [{
+            "id": 1, "name": "MiamiHeat"
+         },
+         {
+            "id": 2, "name": "Brazil"
+         }
+        ]
 
