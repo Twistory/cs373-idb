@@ -26,7 +26,7 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
 ## Handle specific info [/handles/{handle_id}]
 
 + Parameters
-    + handle_id(required, integer) ... the id given to a handle in this website
+    + handle_id(required, integer) ... the id given to a handle by this website
 
 ### List all the info of the handle with the given id [GET]
 
@@ -58,7 +58,7 @@ Hashtags are markers that denote a specific tweet
 ## Hashtag specific info [/hashtags/{hashtag_id}]
 
 + Parameters
-    + hashtag_id(required, integer) ... the id given to a hashtag in this website
+    + hashtag_id(required, integer) ... the id given to a hashtag by this website
 
 ### List all the info of the handle with the given id [GET]
 
@@ -67,6 +67,8 @@ Hashtags are markers that denote a specific tweet
         [{
             "id": 1, "name": "HeatsVsSpurs", "description": "NBA final"
         }]
+
+
 
 # Group Clusters
 Clusters are groups that are associated with multiple handles and hashtags
@@ -82,6 +84,19 @@ Clusters are groups that are associated with multiple handles and hashtags
          },
          {
             "id": 2, "name": "Brazil"
-         }
-        ]
+        }]
 
+## Cluster specific Info [/clusters/{cluster_id}]
+
++ Parameters
+    + cluster_id(required, integer) ... the id given to a cluster by this website
+
+
+### List the id, name, and description of the cluster with the given id [GET]
+
++ Response 200 (application/json)
+
+        [{
+            "id": 1, "name": "MiamiHeat", "description": "A NBA team"
+        }]
+         
