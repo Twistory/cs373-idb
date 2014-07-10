@@ -42,14 +42,18 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
             "tweets": "link to this handle's tweeter website",
             "videos": [{"video": "link to video", "description": "dunk"}],
             "graphs": [{"graph": "link to graph", "description": "number of tweets in 2013"}],
-            "related Handles": [{"id":3, "name": "kobebryant", "page": "/handles/3"}],
-            "related Hashtags": [{"id":1, "name": "HeatsVsSpurs", "page": "/hashtags/1"},
+            "related_handles": [{"id":3, "name": "kobebryant", "page": "/handles/3"}],
+            "related_hashtags": [{"id":1, "name": "HeatsVsSpurs", "page": "/hashtags/1"},
                                  {"id":3, "name": "FreeAgency", "page": "/hashtags/3"}
                                 ],
-            "related Clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/1"}]
+            "related_clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/1"}]
         }
     
++ Response 404 (application/json)
 
+        {
+            "error": "This id does not exsit in the file."
+        }
 
 
 
@@ -83,12 +87,16 @@ Hashtags are markers that denote a specific tweet
         {
             "id": 1, "name": "HeatsVsSpurs", "description": "NBA final",
             "graphs": [{"graph": "link to graph", "description": "number of uses in 2013"}],
-            "related Handles": [{"id":1, "name": "KingJames", "page": "/handles/1"}],
-            "related Hashtags": [],
-            "related Clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/1"}]
+            "related_handles": [{"id":1, "name": "KingJames", "page": "/handles/1"}],
+            "related_hashtags": [],
+            "related_clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/1"}]
         }
     
++ Response 404 (application/json)
 
+        {
+            "error": "This id does not exsit in the file."
+        }
 
 
 # Group Clusters
@@ -119,9 +127,15 @@ Clusters are groups that are associated with multiple handles and hashtags
 
         {
             "id": 1, "name": "MiamiHeat", "description": "A NBA team"
-            "related Handles": [{"id":1, "name": "KingJames", "page": "/handles/1"}],
-            "related Hashtags": [{"id":1, "name": "HeatsVsSpurs", "page": "/hashtags/1"}],
-            "related Clusters": []            
+            "related_handles": [{"id":1, "name": "KingJames", "page": "/handles/1"}],
+            "related_hashtags": [{"id":1, "name": "HeatsVsSpurs", "page": "/hashtags/1"}],
+            "related_clusters": []            
             
         ]
          
++ Response 404 (application/json)
+
+        {
+            "error": "This id does not exsit in the file."
+        }
+        
