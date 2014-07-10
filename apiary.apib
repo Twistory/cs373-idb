@@ -10,11 +10,18 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
 
 
 ## Handle Collection [/handles]
+Retrieve a colletion of handles
++ Model (application/json)
 
-### List the id, name and profile picutre of Handles [GET]
-
-+ Response 200 (application/json)
-
+    + Headers
+    
+        ```
+        Link: <http://idb14.apiary-mock.com/handles>
+        Date: <Tue, 15 Dec 2054 03:11:21 GMT>
+        Accept-Language: <en-us>
+        ```
+    + Body
+        ```
         [{
          "id": 1, "name": "KingJames", "picture": "link to pic"
          }, 
@@ -24,19 +31,30 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
          {
          "id": 3, "name": "kobebryant", "picture": "link to pic"
          }]
-         
+        ```
+        
+### Retrieve a Collection of Handles [GET]
++ Response 200
+
+    [Handle Collection][]
 
 
 
-## Handle specific info [/handles/{handle_id}]
+## Specific Handle [/handles/{handle_id}]
 
 + Parameters
     + handle_id(required, integer) ... the id given to a handle by this website
-
-### List all the info of the handle with the given id [GET]
-
-+ Response 200 (application/json)
-
+    
++ Model (application/json)
+    + Headers
+    
+        ```
+        Link: <http://idb14.apiary-mock.com/handles/1>
+        Date: <Tue, 15 Dec 2054 03:11:21 GMT>
+        Accept-Language: <en-us>
+        ```
+    + Body
+        ```
         {
             "id": 1, "name": "KingJames", "picture": "link to pic", "bio": "Current NBA player",
             "tweets": "link to this handle's tweeter website",
@@ -48,6 +66,14 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
                                 ],
             "related_clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/1"}]
         }
+        ```
+      
+
+### List all the info of the handle with the given id [GET]
+
++ Response 200 (application/json)
+
+    [Specific Handle][]
     
 + Response 404 (application/json)
 
@@ -60,30 +86,52 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
 
-## HashTags Collection [/hashtags]
+## HashTag Collection[/hashtags]
 
-### List the id and name of all HashTags [GET]
++ Model (application/json)
 
-+ Response 200 (application/json)
-
+    + Headers
+    
+        ```
+        Link: <http://idb14.apiary-mock.com/hashtags>
+        Date: <Tue, 15 Dec 2054 03:11:21 GMT>
+        Accept-Language: <en-us>
+        ```
+    + Body
+        ```
         [{
          "id": 1, "name": "HeatsVsSpurs" 
         }, {
          "id": 2, "name": "WorldCup" 
         }, {
          "id": 3, "name": "FreeAgency"
-        ]
+        }]
+        ```
 
 
-## Hashtag specific info [/hashtags/{hashtag_id}]
+### List the id and name of all HashTags [GET]
+
++ Response 200 (application/json)
+
+    [Hashtag Collection][]
+
+
+## Specific Hashtag [/hashtags/{hashtag_id}]
 
 + Parameters
     + hashtag_id(required, integer) ... the id given to a hashtag by this website
 
-### List all the info of the handle with the given id [GET]
++ Model (application/json)
 
-+ Response 200 (application/json)
-
+    + Headers
+    
+        ```
+        Link: <http://idb14.apiary-mock.com/hashtags/1>
+        Date: <Tue, 15 Dec 2054 03:11:21 GMT>
+        Accept-Language: <en-us>
+        ```
+    + Body
+        ```
         {
             "id": 1, "name": "HeatsVsSpurs", "description": "NBA final",
             "graphs": [{"graph": "link to graph", "description": "number of uses in 2013"}],
@@ -91,6 +139,13 @@ Hashtags are markers that denote a specific tweet
             "related_hashtags": [],
             "related_clusters": [{"id":1, "name":"MiamiHeat", "page": "/clusters/1"}]
         }
+        ```
+
+### List all the info of the handle with the given id [GET]
+
++ Response 200 (application/json)
+
+    [Specific Hashtag][]
     
 + Response 404 (application/json)
 
@@ -115,7 +170,7 @@ Clusters are groups that are associated with multiple handles and hashtags
             "id": 2, "name": "Brazil"
         }]
 
-## Cluster specific Info [/clusters/{cluster_id}]
+## Specific Cluster [/clusters/{cluster_id}]
 
 + Parameters
     + cluster_id(required, integer) ... the id given to a cluster by this website
