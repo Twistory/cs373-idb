@@ -2,7 +2,16 @@ FORMAT: 1A
 HOST: twistory.pythonanywhere.com/
 
 #### Twistory
-Twistory API gives access to real world **Twitter data** and view _trending events_ 
+
+Twistory API gives access to real world **Twitter data** and view _trending events_
+
+**Version: v1**
+
+Resources
+
++ [Handles](<http://idb14.apiary-mock.com/handles)
++ [Hashtag](<http://idb14.apiary-mock.com/hashtags)
++ [Clusters](<http://idb14.apiary-mock.com/clusters)
 
 
 # Group Handles
@@ -10,7 +19,6 @@ Twitter Handle resources are _people/entities_ that are actively engaged on twit
 
 
 ## Handle Collection [/handles]
-Retrieve a colletion of handles
 + Model (application/json)
 
     + Headers
@@ -40,10 +48,10 @@ Retrieve a colletion of handles
 
 
 
-## A Handle [/handles/{handle_id}]
+## Handle [/handles/handle_id]
 
 + Parameters
-    + handle_id(required, integer) ... the id given to a handle by this website
+    + handle_id (required, integer, `GET /handles/234`) ... the id given to a handle by this website
     
 + Model (application/json)
     + Headers
@@ -73,7 +81,7 @@ Retrieve a colletion of handles
 
 + Response 200 (application/json)
 
-    [A Handle][]
+    [Handle][]
     
 + Response 404 (application/json)
 
@@ -115,10 +123,10 @@ Hashtags are markers that denote a specific tweet
     [Hashtag Collection][]
 
 
-## A Hashtag [/hashtags/{hashtag_id}]
+## Hashtag [/hashtags/hashtag_id]
 
 + Parameters
-    + hashtag_id(required, integer) ... the id given to a hashtag by this website
+    + hashtag_id(required, integer,`GET /hashtags/45454`) ... the id given to a hashtag by this website
 
 + Model (application/json)
 
@@ -132,7 +140,7 @@ Hashtags are markers that denote a specific tweet
     + Body
         ```
         {
-            "id": 1, "name": "HeatsVsSpurs", "description": "NBA final",
+            "hashtag_id": 1, "name": "HeatsVsSpurs", "description": "NBA final",
             "graphs": [{"graph": "link to graph", "description": "number of uses in 2013"}],
             "related_handles": [{"id":1, "name": "KingJames", "page": "/handles/1"}],
             "related_hashtags": [],
@@ -144,7 +152,7 @@ Hashtags are markers that denote a specific tweet
 
 + Response 200 (application/json)
 
-    [A Hashtag][]
+    [Hashtag][]
     
 + Response 404 (application/json)
 
@@ -185,7 +193,7 @@ Clusters are groups that are associated with multiple handles and hashtags
 
     [Cluster Collection][]
 
-## A Cluster [/clusters/{cluster_id}]
+## Cluster [/clusters/cluster_id]
 
 + Parameters
     + cluster_id(required, integer) ... the id given to a cluster by this website
@@ -215,7 +223,7 @@ Clusters are groups that are associated with multiple handles and hashtags
 
 + Response 200 (application/json)
 
-    [A Cluster][]   
+    [Cluster][]   
     
 
 + Response 404 (application/json)
