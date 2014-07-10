@@ -40,7 +40,7 @@ Retrieve a colletion of handles
 
 
 
-## Specific Handle [/handles/{handle_id}]
+## A Handle [/handles/{handle_id}]
 
 + Parameters
     + handle_id(required, integer) ... the id given to a handle by this website
@@ -73,7 +73,7 @@ Retrieve a colletion of handles
 
 + Response 200 (application/json)
 
-    [Specific Handle][]
+    [A Handle][]
     
 + Response 404 (application/json)
 
@@ -86,7 +86,7 @@ Retrieve a colletion of handles
 # Group Hashtags
 Hashtags are markers that denote a specific tweet
 
-## HashTag Collection[/hashtags]
+## Hashtag Collection [/hashtags]
 
 + Model (application/json)
 
@@ -108,7 +108,6 @@ Hashtags are markers that denote a specific tweet
         }]
         ```
 
-
 ### List the id and name of all HashTags [GET]
 
 + Response 200 (application/json)
@@ -116,7 +115,7 @@ Hashtags are markers that denote a specific tweet
     [Hashtag Collection][]
 
 
-## Specific Hashtag [/hashtags/{hashtag_id}]
+## A Hashtag [/hashtags/{hashtag_id}]
 
 + Parameters
     + hashtag_id(required, integer) ... the id given to a hashtag by this website
@@ -145,7 +144,7 @@ Hashtags are markers that denote a specific tweet
 
 + Response 200 (application/json)
 
-    [Specific Hashtag][]
+    [A Hashtag][]
     
 + Response 404 (application/json)
 
@@ -157,38 +156,68 @@ Hashtags are markers that denote a specific tweet
 # Group Clusters
 Clusters are groups that are associated with multiple handles and hashtags
 
-## Clusters Collection [/clusters]
+## Cluster Collection [/clusters]
 
-### List the id and name of all clusters [GET]
++ Model (application/json)
 
-+ Response 200 (application/json)
-
+    + Headers
+    
+        ```
+        Link: <http://idb14.apiary-mock.com/clusters>
+        Date: <Tue, 15 Dec 2054 03:11:21 GMT>
+        Accept-Language: <en-us>
+        ```
+    + Body
+        ```
         [{
             "id": 1, "name": "MiamiHeat"
          },
          {
             "id": 2, "name": "Brazil"
         }]
+        ```
 
-## Specific Cluster [/clusters/{cluster_id}]
+
+
+### List the id and name of all clusters [GET]
+
++ Response 200 (application/json)
+
+    [Cluster Collection][]
+
+## A Cluster [/clusters/{cluster_id}]
 
 + Parameters
     + cluster_id(required, integer) ... the id given to a cluster by this website
 
++ Model (application/json)
 
-### List the id, name, and description of the cluster with the given id [GET]
-
-+ Response 200 (application/json)
-
+    + Headers
+    
+        ```
+        Link: <http://idb14.apiary-mock.com/clusters>
+        Date: <Tue, 15 Dec 2054 03:11:21 GMT>
+        Accept-Language: <en-us>
+        ```
+    + Body
+        ```
         {
             "id": 1, "name": "MiamiHeat", "description": "A NBA team",
             "graphs": [{"graphs": "link to graph", "description": "active period"}]
             "related_handles": [{"id":1, "name": "KingJames", "page": "/handles/1"}],
             "related_hashtags": [{"id":1, "name": "HeatsVsSpurs", "page": "/hashtags/1"}],
             "related_clusters": []            
-            
-        ]
-         
+        } 
+        ```
+
+
+### List the id, name, and description of the cluster with the given id [GET]
+
++ Response 200 (application/json)
+
+    [A Cluster][]   
+    
+
 + Response 404 (application/json)
 
         {
